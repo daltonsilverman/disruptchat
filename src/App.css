@@ -1,0 +1,315 @@
+.logo {
+  width: 100px; 
+  opacity: 0.5; 
+  position: fixed;
+  top: 10px; 
+  right: 5px; 
+  width: 100px; 
+  margin-bottom: auto;
+}
+
+.logo-container {
+  margin-bottom: 20px;
+  position: fixed;
+  bottom: 10px;    
+  left: 5px;
+  width: 100px; 
+  margin-bottom: auto;
+}
+
+.logo-and-search-container {
+  padding-top: 120px; /* Adjust as needed */
+}
+
+
+
+.centered-chunk {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  height: 100vh; 
+  text-align: center;
+}
+
+.login-form {
+  display: flex; 
+  align-items: center; 
+}
+.register-form {
+  display: flex; 
+  align-items: center; 
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column; 
+  margin-right: 2px; 
+}
+
+input {
+  padding: 2px 4px;
+  margin-bottom: 2px; 
+}
+
+.login-button {
+  background-color: #007bff; 
+  color: white; 
+  padding: 12px 8px; 
+  border: none; 
+  border-radius: 5px; 
+  text-decoration: none;
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: background-color 0.2s; 
+  margin-right: 10px;
+}
+
+.logout-button {
+  margin-top: auto; 
+  background-color: transparent;
+  color: black; 
+  border: 2px solid black;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.text-link {
+  display: inline;
+}
+.link-button:hover {
+  background-color: #0056b3; 
+}
+
+.container {
+  display: flex;
+  height: 100vh; 
+}
+
+.left-column, .center-column, .right-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.left-column {
+  flex: 2; 
+  background-color:#7a90a8
+}
+
+.center-column {
+  flex: 6; 
+  background-color:#c4ddf1
+}
+
+.right-column {
+  flex: 1; 
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%
+}
+
+.sending-box{
+  position: fixed;
+  bottom: 0;
+}
+.message-input{
+  color: black;
+}
+.send-button{
+  color: gray;
+}
+
+.logout-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px; 
+}
+
+.btn {
+  background-color: #e6e5ea;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 100%; /* Takes up full width of parent */
+  height: 47px;
+  line-height: 47px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.02);
+  display: flex;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box; /* Includes padding and border in width */
+}
+.btn:hover {
+  background-color: #c4ddf1;
+  color: black;
+  transform: scale(1.02);
+}
+.btn #plus-sign {
+  flex: 0.2;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  height: 100%;
+  font-size: 10px; /* Adjust as needed */
+  border-right: 1px solid #ebe7fb;
+}
+
+.btn span {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.disrupt-container {
+  color: black;
+  display: block;
+  background-color: transparent;
+  align-items: center;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 120px;
+  border-color: #da190b;
+  border: 2px solid black;
+  border-radius: 7px; 
+}
+
+.daily-disrupt {
+  font-size: 15px;
+  margin-top: auto;
+}
+
+.question {
+  margin-top: auto;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; 
+}
+
+.button-yes, .button-no {
+  padding: 8px 12px; 
+  font-size: 16px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
+}
+
+.button-yes {
+  background-color: #4CAF50; 
+  color: white; 
+}
+
+.button-yes:hover {
+  background-color: #45a049; 
+}
+
+.button-no {
+  background-color: #f44336; 
+  color: white; 
+}
+
+.button-no:hover {
+  background-color: #da190b; 
+}
+
+#debateButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #0056b3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+#debateButton:hover {
+  background-color: #b30077;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+.shake-animation {
+  animation: shake 0.5s;
+}
+
+.profile-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  width: 160px;
+  margin: auto;
+}
+.profile-picture {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.set-profile-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: xx-large;
+  display: inline-block;
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: #007bff; /* Blue color */
+  color: #ffffff; /* White text */
+  border: none;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.corner-pic {
+  width: 160px;
+}
+
+.picture {
+  max-width: 160px;
+  max-height: auto;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+.search-button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
