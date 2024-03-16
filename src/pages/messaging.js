@@ -135,7 +135,7 @@ function Messaging() {
           console.log('Socket connected! ID:', newSocket.id)
         })
         
-        socket.on('connect_error', (error) => {
+        newSocket.on('connect_error', (error) => {
           console.error('CONNECTION ERROR:', error);
         });
         
