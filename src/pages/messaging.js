@@ -156,6 +156,7 @@ function Messaging() {
       useEffect(() => {
         if(socket){
           socket.on('received message', (newMessage) => {
+            console.log('NEW MESSAGE RECEIVED, ', newMessage)
             setCurrentConvoMessages(prevCurrentConvoMessages => [...prevCurrentConvoMessages, newMessage]);
           })
         }
@@ -224,9 +225,10 @@ function Messaging() {
 
 
     const onNewChatSubmit = (newMessage) => {
-        //MessageDispatch({type: 'CREATE_MESSAGE', payload: newMessage})
+        MessageDispatch({type: 'CREATE_MESSAGE', payload: newMessage})
         setCurrentConvoMessages(prevCurrentConvoMessages => [...prevCurrentConvoMessages, newMessage]);
         socket.emit('new message', newMessage)
+        console.log('NEW MESSAGE SENT')
       };
 
     return (
