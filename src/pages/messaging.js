@@ -28,7 +28,7 @@ function Messaging() {
     const [showNewConversationBox, setShowNewConversationBox] = useState(false);
     const { logout } = useLogout()
     const { dispatch: ConvoDispatch } = useConvosContext()
-    const { dispatch: MessageDispatch, messages } = useMessageContext()
+    const { dispatch: MessageDispatch, messages, reload } = useMessageContext()
     const { user } = useAuthContext()
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -39,6 +39,7 @@ function Messaging() {
     const [convoStarted, startConvo] = useState(false);
     const [socket, setSocket] = useState(null);
     const [selectedConversationCompare, setSelectedConversationCompare] = useState(null)
+    const [response, setResponse] = useState(null)
     const handleInputChange = (event) => {
         setMessage(event.target.value);
     };
@@ -133,7 +134,16 @@ function Messaging() {
     
         // Listen for the "connect" event to ensure the socket has connected
         newSocket.on("connect", () => {
-          console.log('Socket connected! ID:', newSocket.id)
+          const response = fetch(`https://disruptchat-backend.onrender.com/api/user/goOnline`, {
+          method: 'POST',
+          headers: {'Authorization': `Bearer ${user.token}`, 'Content-Type': 'application/json'}})
+          console.log('Socket connected!, USER IS ONLINE ID:', newSocket.id)
+        })
+
+        newSocket.on("disconnect", () => {
+          const response = fetch(`https://disruptchat-backend.onrender.com/api/user/goOffline`, {
+          method: 'POST',
+          headers: {'Authorization': `Bearer ${user.token}`, 'Content-Type': 'application/json'}})
         })
         
         newSocket.on('connect_error', (error) => {
@@ -197,9 +207,11 @@ function Messaging() {
         }
     };
     function toggleBoolYes() {
+      setResponse("Yes");
         answer(!answered)
       }
     function toggleBoolNo() {
+        setResponse("No")
         answer(!answered)
       }
 
@@ -213,7 +225,7 @@ function Messaging() {
     console.log('FETCHING MESSAGES WITH SOCKET: ', socket)
     fetchAndSetMessages()
       }
-    }, [selectedConversation, messages, socket])
+    }, [selectedConversation, messages, socket, reload]) // HERE
 
 
     const handleConversationClick = (newConversation) => {
@@ -231,11 +243,11 @@ function Messaging() {
 
 
     const onNewChatSubmit = (newMessage) => {
-        MessageDispatch({type: 'CREATE_MESSAGE', payload: newMessage})
-        setCurrentConvoMessages(prevCurrentConvoMessages => [...prevCurrentConvoMessages, newMessage]);
-        socket.emit('new message', newMessage)
-        console.log('NEW MESSAGE SENT')
-      };
+      MessageDispatch({type: 'CREATE_MESSAGE', payload: newMessage})
+      setCurrentConvoMessages(prevCurrentConvoMessages => [...prevCurrentConvoMessages, newMessage]);
+      socket.emit('new message', newMessage)
+      console.log('NEW MESSAGE SENT')
+    };
 
     return (
         <div className="container">
@@ -260,7 +272,7 @@ function Messaging() {
                         <img src={logoImg} alt="Logo" style={{ maxWidth: '100px', maxHeight: '100px' }} />
                     </div>
                 <div className="disrupt-container">
-                {answered ? <Question toggleBoolYes={toggleBoolYes} toggleBoolNo={toggleBoolNo} /> : <Answered />}
+                {answered ? <Question toggleBoolYes={toggleBoolYes} toggleBoolNo={toggleBoolNo} /> : <Answered response={response} />}
                 </div>
                 <ProfileCard></ProfileCard>
                 <div className="logout-container">
