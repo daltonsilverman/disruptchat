@@ -34,6 +34,7 @@ function Messaging() {
     const [searchResults, setSearchResults] = useState([]);
     const [isSearching, setIsSearching] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [messagesReceived, setMessagesReceived] = useState([])
     const navigate = useNavigate();
     const [convoStarted, startConvo] = useState(false);
     const [socket, setSocket] = useState(null);
@@ -156,7 +157,12 @@ function Messaging() {
       useEffect(() => {
         if(socket){
           socket.on('received message', (newMessage) => {
+            if(newMessage in messagesReceived){
+              return;
+            }
+            setMessagesReceived([...messagesReceived, newMessage])
             console.log('NEW MESSAGE RECEIVED, ', newMessage)
+            MessageDispatch({type: 'CREATE_MESSAGE', payload: newMessage})
             setCurrentConvoMessages(prevCurrentConvoMessages => [...prevCurrentConvoMessages, newMessage]);
           })
         }
